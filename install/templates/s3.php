@@ -64,7 +64,7 @@
           </tr>
           <tr>
             <td class="tar">网站名称：</td>
-            <td><input type="text" name="sitename" value="ThinkCMF内容管理框架" class="input"></td>
+            <td><input type="text" name="sitename" value="Moving内容管理框架" class="input"></td>
             <td><div id="J_install_tip_sitename"></div></td>
           </tr>
           <tr>
@@ -74,12 +74,12 @@
           </tr>
           <tr>
             <td class="tar">关键词：</td>
-            <td><input type="text" name="sitekeywords" value="ThinkCMF,php,内容管理框架,cmf,cms,简约风, simplewind,framework" class="input" autoComplete="off"></td>
+            <td><input type="text" name="sitekeywords" value="" class="input" autoComplete="off"></td>
             <td><div id="J_install_tip_sitekeywords"></div></td>
           </tr>
           <tr>
             <td class="tar">描述：</td>
-            <td><input type="text" name="siteinfo" class="input" value="ThinkCMF是简约风网络科技发布的一款用于快速开发的内容管理框架"></td>
+            <td><input type="text" name="siteinfo" class="input" value="Moving是简约风网络科技发布的一款用于快速开发的内容管理框架"></td>
             <td><div id="J_install_tip_siteinfo"></div></td>
           </tr>
         </table>
