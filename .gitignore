@@ -1,0 +1,5 @@
+data/runtime/Cache/*
+data/runtime/Logs/*
+data/runtime/Temp/*
+data/uc_cache/*
+data/upload/*
