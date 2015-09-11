@@ -161,7 +161,7 @@ class MenuModel extends CommonModel {
                 }
                
             }
-            return $ret;
+            return isset($ret) ? $ret : array();
         }
        
         return false;
