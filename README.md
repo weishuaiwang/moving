@@ -5,4 +5,4 @@ ThinkCMF官网:http://www.thinkcmf.com
 ## UPDATE
 
   
-ThinkCMF 正在为你开放更多.... O(∩_∩)O~ ！
+Moving Cms 正在为你开放更多.... O(∩_∩)O~ ！
