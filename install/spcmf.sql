@@ -440,6 +440,8 @@ CREATE TABLE `sp_terms` (
   `seo_title` varchar(500) DEFAULT NULL,
   `seo_keywords` varchar(500) DEFAULT NULL,
   `seo_description` varchar(500) DEFAULT NULL,
+  `smeta` text COMMENT '扩展字段，保存相关扩展属性，如缩略图；格式为json',
+  `content` longtext COMMENT '类别介绍',
   `list_tpl` varchar(50) DEFAULT NULL COMMENT '分类列表模板',
   `one_tpl` varchar(50) DEFAULT NULL COMMENT '分类文章页模板',
   `listorder` int(5) NOT NULL DEFAULT '0' COMMENT '排序',

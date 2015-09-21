@@ -74,6 +74,10 @@ class AdminTermController extends AdminbaseController {
 	
 	function add_post(){
 		if (IS_POST) {
+			$_POST['smeta']['thumb'] = sp_asset_relative_url($_POST['smeta']['thumb']);
+			$_POST['smeta'] = json_encode($_POST['smeta']);
+			$_POST['content'] = htmlspecialchars_decode($_POST['content']);
+
 			if ($this->terms_model->create()) {
 				if ($this->terms_model->add()!==false) {
 					$this->success("添加成功！",U("AdminTerm/index"));
@@ -105,14 +109,19 @@ class AdminTermController extends AdminbaseController {
 		$tree->init($new_terms);
 		$tree_tpl="<option value='\$id' \$selected>\$spacer\$name</option>";
 		$tree=$tree->get_tree(0,$tree_tpl);
-		
+
+		$this->assign("smeta",json_decode( htmlspecialchars_decode($data['smeta']), true));
 		$this->assign("terms_tree",$tree);
+		$data['content'] = htmlspecialchars_decode($data['content']);
 		$this->assign("data",$data);
 		$this->display();
 	}
 	
 	function edit_post(){
 		if (IS_POST) {
+			$_POST['smeta']['thumb'] = sp_asset_relative_url($_POST['smeta']['thumb']);
+			$_POST['smeta'] = json_encode($_POST['smeta']);
+
 			if ($this->terms_model->create()) {
 				if ($this->terms_model->save()!==false) {
 					$this->success("修改成功！");

@@ -1,4 +1,11 @@
-<admintpl file="header" />
+<admintpl file="header"/>
+<style type="text/css">
+.col-auto { overflow: auto; _zoom: 1;_float: left;}
+.col-right { float: right; width: 210px; overflow: hidden; margin-left: 6px; }
+.table th, .table td {vertical-align: middle;}
+.picList li{margin-bottom: 5px;}
+</style>
+</head>
 <body class="J_scroll_fixed">
 	<div class="wrap J_check_wrap">
 		<ul class="nav nav-tabs">
@@ -7,100 +14,142 @@
 	        <li><a href="#C" data-toggle="tab">模板设置</a></li>
 	    </ul>
 		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('AdminTerm/add_post')}" method="post">
-			<div class="tabbable">
-		        <div class="tab-content">
-		          <div class="tab-pane active" id="A">
-		          		<table cellpadding="2" cellspacing="2" width="100%">
-							<tbody>
-								<tr>
-									<td width="140">上级:</td>
-									<td><select name="parent" class="normal_select">
-											<option value="0">作为一级分类</option>
-											{$terms_tree}
-									</select></td>
-								</tr>
-								<tr>
-									<td>名称:</td>
-									<td><input type="text" class="input" name="name" value=""><span class="must_red">*</span></td>
-								</tr>
-								<tr>
-									<td>描述:</td>
-									<td><textarea name="description" rows="5" cols="57"></textarea></td>
-								</tr>
-								<tr>
-									<td>类型:</td>
-									<td><select name="taxonomy">
-											<foreach name="taxonomys" item="vo">
-									        	<option value="{$key}">{$vo}</option>
-											</foreach>
-									</select></td>
-								</tr>
-							</tbody>
-						</table>
-		          </div>
-		          <div class="tab-pane" id="B">
-		          		<table cellpadding="2" cellspacing="2" width="100%">
-							<tbody>
-								<tr>
-									<td width="180">SEO标题:</td>
-									<td><input type="text" class="input" name="seo_title" value=""></td>
-								</tr>
-								<tr>
-									<td>SEO关键字:</td>
-									<td><input type="text" class="input" name="seo_keywords" value=""></td>
-								</tr>
-								<tr>
-									<td>SEO描述:</td>
-									<td><textarea name="seo_description" rows="5" cols="57"></textarea></td>
-								</tr>
-							</tbody>
-						</table>
-		          </div>
-		          <div class="tab-pane" id="C">
-		          		<table cellpadding="2" cellspacing="2" width="100%">
-							<tbody>
-								<php>$tpl_list=sp_admin_get_tpl_file_list();</php>
-								<tr>
-									<td width="180">列表页模板:</td>
-									<td>
-										<php>
-											$list_tpls=$tpl_list;
-											unset($list_tpls['list']);
-										</php>
-					              		<select  class="normal_select" name="list_tpl">
-					              			<option value="list">list{:C("TMPL_TEMPLATE_SUFFIX")}</option>
-					              			<foreach name="list_tpls" item="vo">
-					              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
-					              			</foreach>
-					              		</select>
-									</td>
-								</tr>
-								<tr>
-									<td>单文章模板:</td>
-									<td>
-										<php>
-											$article_tpls=$tpl_list;
-											unset($article_tpls['article']);
-										</php>
-					              		<select  class="normal_select" name="one_tpl">
-					              			<option value="article">article{:C("TMPL_TEMPLATE_SUFFIX")}</option>
-					              			<foreach name="article_tpls" item="vo">
-					              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
-					              			</foreach>
-					              		</select>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-		          </div>
-		        </div>
+			<div class="col-right">
+		    <div class="table_full">
+		      <table class="table table-bordered">
+		         <tr>
+		          <td><b>缩略图</b></td>
+		        </tr>
+		        <tr>
+		          <td>
+		          	<div  style="text-align: center;"><input type='hidden' name='smeta[thumb]' id='thumb' value=''>
+									<a href='javascript:void(0);' onclick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+									<img src='__ROOT__/statics/images/icon/upload-pic.png' id='thumb_preview' width='135' height='113' style='cursor:hand' /></a>
+			            <input type="button"  class="btn" onclick="$('#thumb_preview').attr('src','__ROOT__/statics/images/icon/upload-pic.png');$('#thumb').val('');return false;" value="取消图片">
+		            </div>
+							</td>
+		        </tr>
+		      </table>
 		    </div>
-		     <div class="form-actions">
-		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
-		      		<a class="btn" href="{:U('AdminTerm/index')}">返回</a>
-		      </div>
+		  </div>
+
+		  <div class="col-auto">
+		  	<div class="table_full">
+					<div class="tabbable">
+			        <div class="tab-content">
+			          <div class="tab-pane active" id="A">
+			          		<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td width="140">上级:</td>
+										<td><select name="parent" class="normal_select">
+												<option value="0">作为一级分类</option>
+												{$terms_tree}
+										</select></td>
+									</tr>
+									<tr>
+										<td>名称:</td>
+										<td><input type="text" class="input" name="name" value=""><span class="must_red">*</span></td>
+									</tr>
+									<tr>
+										<td>描述:</td>
+										<td><textarea name="description" rows="5" cols="57"></textarea></td>
+									</tr>
+									<tr>
+										<td>类型:</td>
+										<td><select name="taxonomy">
+												<foreach name="taxonomys" item="vo">
+										        	<option value="{$key}">{$vo}</option>
+												</foreach>
+										</select></td>
+									</tr>
+									<tr>
+				              <td>内容</td>
+				              <td><div id='content_tip'></div>
+				              	<script type="text/plain" id="content" name="content"></script>
+				                <script type="text/javascript">
+				                //编辑器路径定义
+				                var editorURL = GV.DIMAUB;
+				                </script>
+				                <script type="text/javascript"  src="__ROOT__/statics/js/ueditor/ueditor.config.js"></script>
+				                <script type="text/javascript"  src="__ROOT__/statics/js/ueditor/ueditor.all.min.js"></script>
+											</td>
+				            </tr>
+								</tbody>
+							</table>
+			          </div>
+			          <div class="tab-pane" id="B">
+			          		<table cellpadding="2" cellspacing="2" width="100%">
+								<tbody>
+									<tr>
+										<td width="180">SEO标题:</td>
+										<td><input type="text" class="input" name="seo_title" value=""></td>
+									</tr>
+									<tr>
+										<td>SEO关键字:</td>
+										<td><input type="text" class="input" name="seo_keywords" value=""></td>
+									</tr>
+									<tr>
+										<td>SEO描述:</td>
+										<td><textarea name="seo_description" rows="5" cols="57"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+			          </div>
+			          <div class="tab-pane" id="C">
+			          		<table cellpadding="2" cellspacing="2" width="100%">
+								<tbody>
+									<php>$tpl_list=sp_admin_get_tpl_file_list();</php>
+									<tr>
+										<td width="180">列表页模板:</td>
+										<td>
+											<php>
+												$list_tpls=$tpl_list;
+												unset($list_tpls['list']);
+											</php>
+		              		<select  class="normal_select" name="list_tpl">
+		              			<option value="list">list{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+		              			<foreach name="list_tpls" item="vo">
+		              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+		              			</foreach>
+		              		</select>
+										</td>
+									</tr>
+									<tr>
+										<td>单文章模板:</td>
+										<td>
+											<php>
+												$article_tpls=$tpl_list;
+												unset($article_tpls['article']);
+											</php>
+		              		<select  class="normal_select" name="one_tpl">
+		              			<option value="article">article{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+		              			<foreach name="article_tpls" item="vo">
+		              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+		              			</foreach>
+		              		</select>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+			          </div>
+			        </div>
+			    </div>
+		  	</div>
+		  </div>
+      <div class="form-actions">
+        <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+    		<a class="btn" href="{:U('AdminTerm/index')}">返回</a>
+      </div>
 		</form>
 	</div>
 	<script type="text/javascript" src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+	<script>
+		//编辑器
+    editorcontent = new baidu.editor.ui.Editor();
+    editorcontent.render( 'content' );
+    try{editorcontent.sync();}catch(err){};
+	</script>
 </body>
 </html>
